@@ -11,7 +11,43 @@
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+  // Load the YouTube IFrame Player API asynchronously
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Define the YouTube player
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'https://youtu.be/lpATjoHExOQ',
+      events: {
+        'onReady': onPlayerReady
+      },
+      playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'disablekb': 1,
+        'fs': 0,
+        'loop': 1,
+        'modestbranding': 1,
+        'playsinline': 1
+      }
+    });
+  }
+
+  // Function called when the player is ready
+  function onPlayerReady(event) {
+    event.target.setVolume(0); // Mute the video
+  }
+</script>
+   
     
+    <div id="player"></div>
     <div class="container-fluid" id="one">
     <center>
       <h1>Auguri <br>Irene!</h1>
